@@ -48,7 +48,7 @@ The following details the files and data of interest.
   * fBodyGyroJerkMag
 
   Features names with -XYZ were transformed into number with variable name in the form feature_meanX or feature_std eg tBodyAcc_meanX, fBodyAccJerk_meanY, tBodyGyroMag_mean etc.
-    ### Note the following to interpret each feature:
+    > ## Note the following to interpret each feature:
     1. t- features with this prefix are time domain signals recorded for each axis from
     2. f- features with this prefix are frequency domain computed by applying Fast Fourier Transform (FFT) on some signals.
     3. -Mag features with this suffix are the magnitude of its three-dimensional signals calculated using the Euclidean norm
