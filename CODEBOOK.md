@@ -49,16 +49,16 @@ The following details the files and data of interest.
 
   Features names with -XYZ were transformed into number with variable name in the form feature_meanX or feature_std eg tBodyAcc_meanX, fBodyAccJerk_meanY, tBodyGyroMag_mean etc.
     > ## Note the following to interpret each feature:
-    1. t- features with this prefix are time domain signals recorded for each axis from
-    2. f- features with this prefix are frequency domain computed by applying Fast Fourier Transform (FFT) on some signals.
-    3. -Mag features with this suffix are the magnitude of its three-dimensional signals calculated using the Euclidean norm
-    4. -Acc- measures from the accelerometer
-    5. -Gyro- measures from the gyroscope
-    6. -BodyAcc- actual body acceleration measure of the signal
-    7. -GravityAcc- gravitational acceleration of the signal
-    8. -BodyAccJerk- body linear acceleration derived in time
-    9. -GyroAccJerk- angular velocity derived in time
-    10. -XYZ any of the 3-axial dimensions of a feature
+    1. *t- features* with this prefix are time domain signals recorded for each axis from
+    2. *f- features* with this prefix are frequency domain computed by applying Fast Fourier Transform (FFT) on some signals.
+    3. *-Mag features* with this suffix are the magnitude of its three-dimensional signals calculated using the Euclidean norm
+    4. *-Acc-* measures from the accelerometer
+    5. *-Gyro-* measures from the gyroscope
+    6. *-BodyAcc-* actual body acceleration measure of the signal
+    7. *-GravityAcc-* gravitational acceleration of the signal
+    8. *-BodyAccJerk-* body linear acceleration derived in time
+    9. *-GyroAccJerk-* angular velocity derived in time
+    10. *-XYZ* any of the 3-axial dimensions of a feature
 
 * Subject from the subject_test and subject_train files were transformed into factors.
 
