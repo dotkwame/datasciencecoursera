@@ -3,7 +3,9 @@ run_analysis.R
 
 The *run_analysis.R* file contains all the functions necessary to process and merge the data set.
 
-> features
+> ## the script expects the folder *data/UCI HAR Dataset/* reads the files from.
+
+> ## features
   Global features object that will be instanciated by merge.all.data() on first run then later utilized by process.file.data(row)
 
 > ## merge.all.data()
@@ -28,4 +30,4 @@ Replaces the numeric factor labels to readable labels.
 Prepares and selects the feature labels of interest from the main list. Their positions are also noted to be used by *process.file.data(row)
 
 > ## avg.vars.subject.activity(data = merge.all.data())
-Accepts as input a dataframe to, which gets converted to a datable to work with. Where no arguments is passed in *merge.all.data()* is called which returns the complete data set.
+Accepts as input a dataframe to, which gets converted to a datable to work with. Where no arguments is passed in *merge.all.data()* is called which returns the complete data set. Returns a tidy data set with the average of each variable for each activity and each subject
