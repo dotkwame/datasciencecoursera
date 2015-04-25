@@ -3,7 +3,7 @@ run_analysis.R
 
 > The *run_analysis.R* file contains all the functions necessary to process and merge the data set.
 
-### the script expects the folder *data/UCI HAR Dataset/* reads the files from.
+### the script expects the folder *data/UCI HAR Dataset/* where it will read the files from.
 
 > ## features
   Global features object that will be instanciated by merge.all.data() on first run then later utilized by process.file.data(row)
