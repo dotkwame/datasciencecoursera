@@ -1,14 +1,23 @@
 
-features <- NULL
+if(!require(data.table)){
+    stop("please install the data.table package before running this script")    
+}
+
+
+path.to.data <- "./data/"
+
+if(!exists("features")){
+        features <<- NULL
+}
 
 merge.all.data <- function(){
-        subject.train = "data/UCI HAR Dataset/train/subject_train.txt"
-        x.train = "data/UCI HAR Dataset/train/X_train.txt"
-        y.train = "data/UCI HAR Dataset/train/y_train.txt"
+        subject.train = paste(path.to.data, "UCI HAR Dataset/train/subject_train.txt", sep = "")
+        x.train = paste(path.to.data, "UCI HAR Dataset/train/X_train.txt", sep = "")
+        y.train = paste(path.to.data,"UCI HAR Dataset/train/y_train.txt", sep = "")
         
-        subject.test = "data/UCI HAR Dataset/test/subject_test.txt"
-        x.test = "data/UCI HAR Dataset/test/X_test.txt"
-        y.test = "data/UCI HAR Dataset/test/y_test.txt"
+        subject.test = paste(path.to.data, "UCI HAR Dataset/test/subject_test.txt", sep = "")
+        x.test = paste(path.to.data, "UCI HAR Dataset/test/X_test.txt", sep = "")
+        y.test = paste(path.to.data, "UCI HAR Dataset/test/y_test.txt", sep = "")
         
         if (is.null(features))
                 features <<- retrieve.features()        
@@ -17,7 +26,7 @@ merge.all.data <- function(){
         test.data.files <- c(subject = subject.test, x = x.test, activity = y.test)
         
         train.data <- extract.and.merge.data(train.data.files)
-        
+        #browser()
         test.data <- extract.and.merge.data(test.data.files)
         
         merged.data <- rbind(train.data, test.data)
@@ -36,12 +45,16 @@ extract.and.merge.data <- function(files){
         file.data <- lapply(files, load.file)
         
         t.data <- data.frame(subject = numeric(), activity = numeric())
+        #t.data <- data.table(subject = numeric(), activity = numeric())
         fs <- features$feature;
         num.fs <- length(fs)
         
         for(i in 1:num.fs){
                 n = fs[i]
+                
                 t.data[n] <- numeric()
+        
+                #t.data[,eval(quote(n)) := numeric()] #<- numeric()                
         }
         
         l <- length(file.data$subject)
@@ -53,8 +66,7 @@ extract.and.merge.data <- function(files){
                 
                 r = c(s, a, x)
                 
-                t.data[nrow(t.data)+1, ] <- r
-                
+                t.data[nrow(t.data)+1, ] <- r                
         }
         
         t.data
@@ -64,9 +76,13 @@ extract.and.merge.data <- function(files){
 # Use fread for speedy file reading
 load.file <- function(filename){        
         raw.data <- fread(filename, header=F, sep="\n")
-        raw.data <- as.data.frame(raw.data)
+        #raw.data <- as.data.frame(raw.data)
         
-        clean.data <- lapply(raw.data[,1], process.file.data)
+        #clean.data <- lapply(raw.data[,1], process.file.data)
+        
+        clean.data <- lapply(unlist(raw.data[,1, with = FALSE]), process.file.data)
+        
+        #browser()
         
         clean.data
 }
