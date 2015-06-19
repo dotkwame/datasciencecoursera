@@ -183,5 +183,5 @@ avg.vars.subject.activity <- function(data = merge.all.data()){
 }
 
 tidy.dataset <- avg.vars.subject.activity()
-write.table(avg, file = "tidydataset.txt", row.name=FALSE)
+write.table(tidy.dataset, file = "tidydataset.txt", row.name=FALSE)
 
